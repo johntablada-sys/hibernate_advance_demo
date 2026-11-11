@@ -131,7 +131,13 @@ public class AppDaoImpl implements AppDao {
 	@Override
 	@Transactional(readOnly = true)
 	public Instructor findInstructorWithCourses(int id) {
-		return entityManager.find(Instructor.class, id);
+		TypedQuery<Instructor> query = entityManager.createQuery(
+				"SELECT i FROM Instructor i " +
+						"LEFT JOIN FETCH i.courses " +
+						"WHERE i.id = :data",
+				Instructor.class);
+		query.setParameter("data", id);
+		return query.getResultList().stream().findFirst().orElse(null);
 	}
 
 	@Override

@@ -31,7 +31,7 @@ public class DemoApplication {
 			// findInstructorWithCourses(appDao);
 			// findCoursesForInstructor(appDao);
 			// deleteInstructor(appDao);
-			deleteCourse(appDao);
+			// deleteCourse(appDao);
 			// deleteStudent(appDao);
 		};
 	}
